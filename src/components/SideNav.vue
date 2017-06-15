@@ -1,14 +1,19 @@
 <template>
-    <div>
+    <div class='md-sidenav-content'>
         選單
-        <hr>
-        <select>
-            <option v-for="option in options">
+      <hr>
+      <ol>
+            <li v-for="option in options">
             {{ option.name }}
-            </option>
-        </select>
-        </div>
+            </li>
+      </ol>
+    </div>
 </template>
+
+
+<style lang="scss" src="../assets/stylesheets/components/mdSidenav.scss"></style>
+
+
 <script>
 import axios from 'axios'
     
