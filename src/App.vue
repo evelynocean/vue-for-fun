@@ -1,8 +1,9 @@
 <template>
     <div class="container">
-        <side-nav class="md-left md-fixed">
-
-        </side-nav>
+        <side-content>
+            <side-top></side-top>
+            <side-menu-list></side-menu-list>
+        </side-content>
         <main-content></main-content>
     </div>
 </template>
@@ -32,13 +33,17 @@
       padding-left: $sizebar-size;
     }
   }
-    .md-sidenav-content {
+    .side-content {
+      position: absolute;
+      min-height: 100%;
+      margin-left: -280px;
       width: $sizebar-size;
       display: flex;
       flex-flow: column;
       overflow: hidden;
+      background-color: aliceblue;
       @media (min-width: 1281px) {
-        top: 0;
+        //top: 0;
         pointer-events: auto;
         transform: translate3d(0, 0, 0);
         box-shadow: $material-shadow-2dp;
@@ -46,13 +51,13 @@
     }
   
    .main-content {
-    padding: 16px;
     flex: 1;
     overflow: auto;
     background-color: #fff;
     transform: translate3D(0, 0, 0);
     transition: $swift-ease-out;
     transition-delay: .2s;
+    background-color: cornsilk;
   }
 
 </style>

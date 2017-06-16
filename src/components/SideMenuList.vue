@@ -16,7 +16,7 @@
 
 <script>
 import axios from 'axios'
-    
+
 export default {
   data: () => ({
     options: [
@@ -28,15 +28,15 @@ export default {
     ]
   }),
   mounted () {
-      console.log(this.options, this.$options);
-      axios.get('http://evelyn.bonnie/getMenuLists')
-      .then(function (response) {
-        console.log(response.data);
-        this.options = response.data;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    }
+    console.log(this.options, this.$options)
+    axios.get('http://evelyn.bonnie/getMenuLists')
+    .then(function (response) {
+      console.log(response.data)
+      this.options = response.data
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
   }
+}
 </script>
