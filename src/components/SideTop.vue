@@ -3,7 +3,7 @@
 </template>
 <style lang="scss">
 .side-top {
-    height: 300px;
+    height: 100px;
     width: 100%;
     background-color: #f0f0f0;
 }
