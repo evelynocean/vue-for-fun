@@ -1,6 +1,6 @@
 <template>
     <div class='main-content'>
-        {{mainContent}}
+        <router-view></router-view>
     </div>
 </template>
 <script>

@@ -1,11 +1,9 @@
 <template>
     <div class='md-sidenav-content'>
-        <ul class="menu-list-ul">
-            <template v-for="item in items">
-                <li>
-                <a href="#/" class="menu-list-item menu-button">{{ item.name }}</a>
-                </li>
-            </template>
+        <ul class="menu-list-ul">             
+            <router-link v-for="item in items" tag="li" :to="item.name">
+                <a class="menu-list-item menu-button">{{ item.name }}</a>
+             </router-link>
         </ul>
     </div>
 </template>
