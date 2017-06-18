@@ -17,7 +17,8 @@
         "axios": "^0.16.2",
         "build": "^0.1.4",
         "vue": "^2.3.3",
-        "vue-router": "^2.3.1"
+        "vue-router": "^2.3.1",
+        "vue-tables": "^1.6.42"
     },
     "devDependencies": {
         "autoprefixer": "^6.7.2",
