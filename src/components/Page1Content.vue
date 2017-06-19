@@ -1,6 +1,7 @@
 <template>
   <form class="page-1-content">
         <div class="--con">
+        <h2>0616</h2>
             <label>title:{{title}}</label> 
         </div>
         <div class="--con">
@@ -32,6 +33,7 @@
                 </label>
                 {{CHK}}
                 <p>
+                <h2>0619</h2>
                 <label><input type="radio" value="1" v-model="RDO">radio-1</label>
                 <label><input type="radio" value="2" v-model="RDO">radio-2</label>
                 <label><input type="radio" value="3" v-model="RDO">radio-3</label>
@@ -39,26 +41,41 @@
             </div>
         </div>
         <div class="--con">
-            <label>select / datepicker </label>
+            <label> select </label>
             <div>
-            <select v-model="selectedSingle" :name="singleSel">
-            <option v-for="item in selectItems">{{item.name}}</option>
-            </select>
-            <br>Selected: {{selectedSingle}}
-            <br>
-            <select v-model="selectedMulti" multiple :name="multiSel">
-            <option v-for="item in selectItems">{{item.name}}</option>
-            </select>
-            <br>Selected: {{selectedMulti}}
+                <select v-model="selectedSingle" :name="singleSel">
+                    <option v-for="item in selectItems">{{item.name}}</option>
+                </select>
+                Selected: {{selectedSingle}}
+                <p>
+                <select v-model="selectedMulti" multiple :name="multiSel">
+                    <option v-for="item in selectItems">{{item.name}}</option>
+                </select>
+                Selected: {{selectedMulti}}
+            </div>
+        </div>
+        <div class="--con">
+            <label> datepicker </label>
+            <div>
+                Vue date : <input type="date"></input>
+                <p>
+                <a href='https://www.npmjs.com/package/vue2-datepicker'>vue2-datepicker</a>
+                <span class="todo">* 版面跟功能跑掉</span>
+                <p>
+                <div>
+                    <date-picker v-model="time1"></date-picker>
+                    <date-picker v-model="time2" range></date-picker>
+                </div>
             </div>
         </div>
         
-        <div class="--con">
+        <div class="--con" style="display: none;">
             <label>todo list </label>
             <div>
+
             </div>
         </div>
-        <div class="--con">
+        <div class="--con" style="display: none;">
             <label>table / sort table</label>
             <div>
             </div>
@@ -87,6 +104,12 @@
         padding-left: 12px;
     }
 
+    .page-1-content h2 {
+        color: blueviolet;
+        background: antiquewhite;
+        width: 98％;
+    }
+
     .--chk label {
         color: ＃000;
         line-height: 20px;
@@ -98,8 +121,11 @@
     }
 </style>
 <script>
+import DatePicker from 'vue2-datepicker'
+
 export default {
   name: 'page1',
+  components: { DatePicker },
   data () {
     return {
       title: 'page 1 content',
