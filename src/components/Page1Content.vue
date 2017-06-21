@@ -67,10 +67,12 @@
                     <date-picker v-model="time2" range></date-picker>
                 </div>
             </div>
+            <h2>0620</h2>
+            <div>{{ $t("currentTime") }} {{ date |  moment }}</div>
         </div>
         
         <div class="--con" style="display: none;">
-            <label>todo list </label>
+            <label>todo list / 語系套用</label>
             <div>
 
             </div>
@@ -122,6 +124,7 @@
 </style>
 <script>
 import DatePicker from 'vue2-datepicker'
+import moment from 'moment'
 
 export default {
   name: 'page1',
@@ -142,7 +145,8 @@ export default {
         {'name': 'option-5'}
       ],
       selectedSingle: '',
-      selectedMulti: ''
+      selectedMulti: '',
+      date: ''
     }
   },
   computed: {
@@ -161,7 +165,24 @@ export default {
         } else {
             console.log('no');
         }
+    },
+    moment: function () {
+      return moment();
+    },
+    updateTime: function () {
+        var vm = this;
+        window.setInterval(() => {
+            vm.date = vm.moment(vm.date).format('Y-M-D HH:mm:ss');
+        }, 1000);
     }
+  },
+  filters: {
+    moment: function (date) {
+      return moment(date).format('Y-M-D HH:mm:ss');
+    }
+  },
+  mounted() {
+    this.updateTime();
   }
 }
 </script>
