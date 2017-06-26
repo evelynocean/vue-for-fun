@@ -32,7 +32,7 @@
                     checkbox-{{n}}
                 </label>
                 {{CHK}}
-                <p>
+                <p></p>
                 <h2>0619</h2>
                 <label><input type="radio" value="1" v-model="RDO">radio-1</label>
                 <label><input type="radio" value="2" v-model="RDO">radio-2</label>
@@ -47,7 +47,7 @@
                     <option v-for="item in selectItems">{{item.name}}</option>
                 </select>
                 Selected: {{selectedSingle}}
-                <p>
+                <p></p>
                 <select v-model="selectedMulti" multiple :name="multiSel">
                     <option v-for="item in selectItems">{{item.name}}</option>
                 </select>
@@ -58,10 +58,10 @@
             <label> datepicker </label>
             <div>
                 Vue date : <input type="date"></input>
-                <p>
+                <p></p>
                 <a href='https://www.npmjs.com/package/vue2-datepicker'>vue2-datepicker</a>
                 <span class="todo">* 版面跟功能跑掉</span>
-                <p>
+                <p></p>
                 <div>
                     <date-picker v-model="time1"></date-picker>
                     <date-picker v-model="time2" range></date-picker>
@@ -151,7 +151,7 @@ export default {
   },
   computed: {
     fullName: function () {
-        return this.firstName + ' ' + this.lastName
+      return this.firstName + ' ' + this.lastName
     }
   },
   methods: {
@@ -159,30 +159,30 @@ export default {
       return this.textareaMessage.split('').reverse().join('')
     },
     updateCHK: function ($event) {
-        console.log($event.parentNode);
-        if (this.CHK.indexOf($event.target.value) >= 0) {
-           console.log('in_array');
-        } else {
-            console.log('no');
-        }
+      console.log($event.parentNode)
+      if (this.CHK.indexOf($event.target.value) >= 0) {
+        console.log('in_array')
+      } else {
+        console.log('no')
+      }
     },
     moment: function () {
-      return moment();
+      return moment()
     },
     updateTime: function () {
-        var vm = this;
-        window.setInterval(() => {
-            vm.date = vm.moment(vm.date).format('Y-M-D HH:mm:ss');
-        }, 1000);
+      var vm = this
+      window.setInterval(() => {
+        vm.date = vm.moment(vm.date).format('Y-M-D HH:mm:ss')
+      }, 1000)
     }
   },
   filters: {
     moment: function (date) {
-      return moment(date).format('Y-M-D HH:mm:ss');
+      return moment(date).format('Y-M-D HH:mm:ss')
     }
   },
-  mounted() {
-    this.updateTime();
+  mounted () {
+    this.updateTime()
   }
 }
 </script>

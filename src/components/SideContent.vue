@@ -1,6 +1,5 @@
 <template>
     <div class="side-content">
-    SideContent
-    <slot></slot>
+        <slot></slot>
     </div>
 </template>

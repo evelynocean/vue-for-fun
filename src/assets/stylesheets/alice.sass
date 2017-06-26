@@ -1,0 +1,87 @@
+body
+  .container
+    min-height: 100%
+    display: flex
+    flex-flow: column nowrap
+    flex: 1
+    transition: $swift-ease-out
+    @media (min-width: 1281px)
+      padding-left: $sizebar-size
+
+  .side-top
+    min-height: 160px
+    border-bottom: 1px solid rgba(0,0,0,.12)
+    background-color: #303030
+    padding: 0 8px
+    display: flex
+    align-items: center
+    align-content: center
+    flex-flow: row wrap
+    position: relative
+
+  .side-content
+    position: absolute
+    min-height: 100%
+    margin-left: -$sizebar-size
+    width: $sizebar-size
+    display: flex
+    flex-flow: column
+    overflow: hidden
+    background-color: #303030
+    @media (min-width: 1281px)
+      top: 0
+      pointer-events: auto
+      transform: translate3d(0, 0, 0)
+      box-shadow: $material-shadow-2dp
+    .md-sidenav-content
+      overflow: auto
+      flex: 1
+      .menu-list-ul
+        padding: 4px 0
+        li
+          padding: 0
+          margin: 0
+          color: #f4f4f4
+          box-sizing: border-box
+          text-shadow: none
+          border-top: 1px solid rgba(0,0,0,0.1)
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.05)
+          &:hover
+            background-color: #080808
+      .md-button, .md-button:focus
+        outline: none
+      .menu-list-item
+        margin: 0
+        padding: 0 16px
+        display: flex
+        flex-flow: row nowrap
+        align-items: center
+        justify-content: space-between
+        flex: 1
+        position: relative
+        text-align: left
+        text-transform: none
+        color: #ffffff
+        text-shadow: none
+
+  .page-content
+    .main-header
+      padding: 0 8px
+      min-height: 64px
+      display: flex
+      align-items: center
+      align-content: center
+      flex-flow: row wrap
+      z-index: 2
+      position: relative
+      color: #ffffff
+      background-color: #101010
+      box-shadow: 0 1px 3px rgba(0,0,0,.2), 0 1px 1px rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12)
+
+    .main-content
+      flex: 1
+      overflow: auto
+      background-color: #fff
+      transform: translate3D(0, 0, 0)
+      transition: $swift-ease-out
+      transition-delay: .2s

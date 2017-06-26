@@ -8,55 +8,13 @@
     </div>
 </template>
 
-<style lang="scss">
-    .menu-list-ul {
-        padding: 4px 0;
-    }
-    .md-sidenav-content {
-        overflow: auto;
-        flex: 1;
-    }
-
-    .md-button, .md-button:focus {
-        outline: none;
-    }
-
-    .menu-list-item {
-        margin: 0;
-        padding: 0 16px;
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        justify-content: space-between;
-        flex: 1;
-        position: relative;
-        text-align: left;
-        text-transform: none;
-    }
-
-    .menu-button {
-        min-width: 88px;
-        border-radius: 2px;
-        transition: all .4s cubic-bezier(.25,.8,.25,1);
-        font-family: inherit;
-        font-style:  inherit;
-        line-height: 36px;
-        text-decoration: none;
-        vertical-align: top;
-        white-space: nowrap;
-        &:hover{
-            background-color: #f0f0f0;
-        }
-    }
-</style>
-
 <script>
 import axios from 'axios'
 
 export default {
   data: () => ({
     items: [
-      { id: 1, name: 'name_1' },
+      { id: 1, name: 'name_1', children: { id: 1, name: 'name_1' } },
       { id: 2, name: 'name_2' },
       { id: 3, name: 'name_3' },
       { id: 4, name: 'name_4' },
