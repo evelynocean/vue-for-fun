@@ -5,7 +5,7 @@
                 BUTTON
             </button>
         </div>
-        <div class="header-bar">pageTitle</div>
+        <div class="header-bar">{{ pageTitle }}</div>
     </div>
 </template>
 

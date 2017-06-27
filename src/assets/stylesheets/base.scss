@@ -70,3 +70,15 @@ iframe {
 [tabindex="-1"]:focus {
   outline: none !important;
 }
+
+.sorting {
+  background: url('/static/images/sort_both.png') no-repeat center right
+}
+
+.sorting_asc {
+  background: url('/static/images/sort_asc.png') no-repeat center right
+}
+
+.sorting_desc {
+  background: url('/static/images/sort_desc.png') no-repeat center right
+}
