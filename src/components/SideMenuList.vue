@@ -1,8 +1,10 @@
 <template>
     <div class='md-sidenav-content'>
         <ul class="menu-list-ul">             
-            <router-link v-for="item in items" tag="li" :to="item.levelKey">
+            <router-link v-for="item in items" tag="li" :to="item.levelKey"
+            :v-seen="item.seen">
                 <a class="menu-list-item menu-button">{{ item.levelName }}</a>
+                <span></span>
              </router-link>
         </ul>
     </div>
@@ -35,7 +37,8 @@ export default {
         var item = {
           levelKey: r.levelKey,
           levelName: r.levelName,
-          levelTag: r.levelTag
+          levelTag: r.levelTag,
+          seen: (r.levelTag === '1')
         }
         vm.items.push(item)
         console.log('menuListExpand item ', item)

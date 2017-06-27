@@ -4,8 +4,8 @@
             <button class="md-button md-icon-button nav-trigger" :type="type" :disabled="disabled" @click="toggleSidenav">
                 BUTTON
             </button>
-            <div class="md-title">{{ pageTitle }}</div>
         </div>
+        <div class="header-bar">pageTitle</div>
     </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     toggleSidenav () {
-      console.log(this.$root);
+      console.log(this.$root)
       this.$root.toggleSidenav()
     }
   },

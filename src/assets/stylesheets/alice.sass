@@ -49,6 +49,13 @@ body
           &:hover
             background-color: #080808
             outline: none
+          span
+            margin-left: 200px
+            margin-top: -20px
+            font-size: 1.5rem
+            position: absolute
+            &:before
+              content: "\e600"
       .md-button, .md-button:focus
         &:hover
           outline: none
@@ -65,8 +72,6 @@ body
         text-transform: none
         color: #ffffff
         text-shadow: none
-      .el-icon-arrow-down
-        content: "\e600"
 
   .page-content
     .main-header
@@ -82,10 +87,31 @@ body
       background-color: #101010
       box-shadow: 0 1px 3px rgba(0,0,0,.2), 0 1px 1px rgba(0,0,0,.14), 0 2px 1px -1px rgba(0,0,0,.12)
 
-    .main-content
-      flex: 1
-      overflow: auto
-      background-color: #fff
-      transform: translate3D(0, 0, 0)
-      transition: $swift-ease-out
-      transition-delay: .2s
+    .header-bar
+      background-color: #444
+      color: #ffffff
+      border-bottom: 1px solid rgba(0,0,0,0.3)
+      box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset
+      text-shadow: 0 1px 0 rgba(0,0,0,0.5)
+      height: 48px
+      font-size: 16px
+      padding-left: 16px
+      padding-top: 10px
+
+  .main-content
+    flex: 1
+    overflow: auto
+    background-color: #6e6e6e
+    padding: 10px
+    transform: translate3D(0, 0, 0)
+    transition: $swift-ease-out
+    transition-delay: .2s
+    height: 100%
+    .outer
+      background: #ffffff
+      border: 6px solid #e4e4e4
+      height: 100%
+    .inner
+      background: #ffffff
+      border: 6px solid #e4e4e4
+      height: 100%
