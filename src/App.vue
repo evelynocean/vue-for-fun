@@ -16,14 +16,6 @@
 
 <script>
 export default {
-  name: 'app',
-  methods: {
-    toggleSidenav () {
-      this.$refs['side-content'].toggle()
-    },
-    closeSidenav () {
-      this.$refs['side-content'].close()
-    }
-  }
+  name: 'app'
 }
 </script>
