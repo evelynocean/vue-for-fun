@@ -1,12 +1,21 @@
 <template>
     <div class='md-sidenav-content'>
         <ul class="menu-list-ul">             
-            <router-link v-for="item in items" tag="li" :to="item.levelKey"
-            :v-seen="item.seen">
+            <router-link v-for="item in items" tag="li" :to="item.levelKey">
                 <a class="menu-list-item menu-button">{{ item.levelName }}</a>
                 <span></span>
              </router-link>
         </ul>
+
+        <el-menu v-for="itemlv1 in items" default-active="" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" theme="dark">
+          <el-submenu index="itemlv1.levelKey">
+            <template slot="title">{{ itemlv1.levelName }}</template>
+              <el-menu-item v-for="itemlv2 in itemlv1.childrenList" index="itemlv2.levelKey">
+                  {{ itemlv2.levelName }}</el-menu-item>
+          </el-submenu>
+        </el-menu>
+
+        <recursive-nemu></recursive-nemu>
     </div>
 </template>
 
@@ -16,20 +25,14 @@ import axios from 'axios'
 
 export default {
   data: () => ({
-    items: [
-      // { id: 1, name: 'name_1', children: { id: 1, name: 'name_1' } },
-      // { id: 2, name: 'name_2' },
-      // { id: 3, name: 'name_3' },
-      // { id: 4, name: 'name_4' },
-      // { id: 5, name: 'name_5' }
-    ]
+    items: []
   }),
   methods: {
     handleOpen (key, keyPath) {
-      console.log(key, keyPath)
+        // console.log(key, keyPath)
     },
     handleClose (key, keyPath) {
-      console.log(key, keyPath)
+        // console.log(key, keyPath)
     },
     menuListExpand (menu) {
       var vm = this
@@ -54,7 +57,7 @@ export default {
     var vm = this
     axios.get('http://evelyn.bonnie/getMenuLists')
     .then(function (response) {
-      vm.menuListExpand(response.data)
+      vm.items = response.data
     })
     .catch(function (error) {
       console.log(error)
