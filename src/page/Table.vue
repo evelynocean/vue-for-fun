@@ -1,7 +1,36 @@
 <template>
-<div>
+<div style="padding: 10px;">
     <template>
-    <el-button type="text" @click="open">点击打开 Message Box</el-button>
+      <el-button type="text" @click="open">点击打开 Message Box</el-button>
+      <el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>
+      <el-dialog title="收货地址" :visible.sync="dialogTableVisible">
+        <el-table :data="gridData">
+          <el-table-column property="date" label="日期" width="150"></el-table-column>
+          <el-table-column property="name" label="姓名" width="200"></el-table-column>
+          <el-table-column property="address" label="地址"></el-table-column>
+        </el-table>
+      </el-dialog>
+
+      <!-- Form -->
+      <el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
+
+      <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+      <el-form :model="form">
+        <el-form-item label="活动名称" :label-width="formLabelWidth">
+          <el-input v-model="form.name" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="活动区域" :label-width="formLabelWidth">
+        <el-select v-model="form.region" placeholder="请选择活动区域">
+          <el-option label="区域一" value="shanghai"></el-option>
+          <el-option label="区域二" value="beijing"></el-option>
+        </el-select>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+      <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+      </div>
+      </el-dialog>
     </template>
   <el-table
     ref="multipleTable"
@@ -83,65 +112,95 @@
 </style>
 
 <script>
-  export default {
-    data () {
-      return {
-        tableData3: [{
-          tag1: '1',
-          tag2: 'II',
-          tag3: '一',
-          tag4: '1'
-        }, {
-          tag1: '2',
-          tag2: 'ZZ',
-          tag3: '貳',
-          tag4: '1'
-        }, {
-          tag1: '3',
-          tag2: 'MM',
-          tag3: '三',
-          tag4: '1'
-        }, {
-          tag1: '4',
-          tag2: 'WW',
-          tag3: '肆',
-          tag4: '2'
-        }, {
-          tag1: '5',
-          tag2: 'AA',
-          tag3: '測試',
-          tag4: '2'
-        }]
+export default {
+  data () {
+    return {
+      tableData3: [{
+        tag1: '1',
+        tag2: 'II',
+        tag3: '一',
+        tag4: '1'
+      }, {
+        tag1: '2',
+        tag2: 'ZZ',
+        tag3: '貳',
+        tag4: '1'
+      }, {
+        tag1: '3',
+        tag2: 'MM',
+        tag3: '三',
+        tag4: '1'
+      }, {
+        tag1: '4',
+        tag2: 'WW',
+        tag3: '肆',
+        tag4: '2'
+      }, {
+        tag1: '5',
+        tag2: 'AA',
+        tag3: '測試',
+        tag4: '2'
+      }],
+      gridData: [{
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-04',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-01',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-03',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }],
+      dialogTableVisible: false,
+      dialogFormVisible: false,
+      form: {
+        name: '',
+        region: '',
+        date1: '',
+        date2: '',
+        delivery: false,
+        type: [],
+        resource: '',
+        desc: ''
+      },
+      formLabelWidth: '120px'
+    }
+  },
+
+  methods: {
+    toggleSelection (rows) {
+      if (rows) {
+        rows.forEach(row => {
+          this.$refs.multipleTable.toggleRowSelection(row)
+        })
+      } else {
+        this.$refs.multipleTable.clearSelection()
       }
     },
-
-    methods: {
-      toggleSelection (rows) {
-        if (rows) {
-          rows.forEach(row => {
-            this.$refs.multipleTable.toggleRowSelection(row)
+    handleSelectionChange (val) {
+      this.multipleSelection = val
+    },
+    filterTag (value, row) {
+      return row.tag4 === value
+    },
+    open () {
+      this.$alert('这是一段内容', '标题名称', {
+        confirmButtonText: '确定',
+        callback: action => {
+          this.$message({
+            type: 'info',
+            message: `action: ${action}`
           })
-        } else {
-          this.$refs.multipleTable.clearSelection()
         }
-      },
-      handleSelectionChange (val) {
-        this.multipleSelection = val
-      },
-      filterTag (value, row) {
-        return row.tag4 === value
-      },
-      open () {
-        this.$alert('这是一段内容', '标题名称', {
-          confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${action}`
-            })
-          }
-        })
-      }
+      })
     }
   }
+}
 </script>

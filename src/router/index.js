@@ -9,7 +9,7 @@ Vue.use(Router)
 
 export default new Router({
   routes: [{
-    path: '/AA',
+    path: '/aa',
     component: Table
     // children: [
     //   { path: '/BB', component: Page1Content },
@@ -17,13 +17,13 @@ export default new Router({
     //   { path: '/CC', component: Hello }
     // ]
   }, {
-    path: '/BB',
+    path: '/bb',
     component: Form
   }, {
     path: '/bb2',
     component: Page1Content
   }, {
-    path: '/CC',
+    path: '/cc',
     component: Page1
   }
   ]

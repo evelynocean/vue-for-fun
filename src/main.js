@@ -22,7 +22,7 @@ Vue.component('side-menu-list', SideMenuList)
 Vue.component('side-content', SideContent)
 Vue.component('page-content', PageContent)
 Vue.component('main-content', MainContent)
-Vue.component('recursive-nemu', recursiveMenu)
+Vue.component('recursive-menu', recursiveMenu)
 Vue.config.productionTip = false
 
 // var recursiveMenu = Vue.extend({

@@ -23,9 +23,10 @@ body
     flex-flow: row wrap
     position: relative
     .outer
+      padding: 10px
       background: #ffffff
       border: 6px solid #e4e4e4
-      height: 160px
+      height: 120px
       padding-top: 16px
       margin-left: 8px
       width: 120px
@@ -45,13 +46,15 @@ body
     flex-flow: column
     overflow: hidden
     background-color: #303030
-    .el-menu--dark 
+    .el-menu--dark, .el-menu
       background-color: #303030
-      .el-menu-item, .el-submenu, .el-submenu__title
+      color: #f4f4f4
+      .el-menu-item, .el-submenu, .el-submenu__title, .el-submenu .el-menu .el-menu-item
         color: #f4f4f4
         background-color: #303030
         &:hover
           background-color: #080808
+          text-decoration: none
     @media (min-width: 1281px)
       top: 0
       pointer-events: auto
@@ -60,6 +63,7 @@ body
     .md-sidenav-content
       overflow: auto
       flex: 1
+      height: 800px
       .menu-list-ul
         padding: 4px 0
         li

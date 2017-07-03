@@ -1,6 +1,7 @@
 <template>
     <div class='md-sidenav-content'>
-        <ul class="menu-list-ul">             
+        <!---
+        <ul class="menu-list-ul">
             <router-link v-for="item in items" tag="li" :to="item.levelKey">
                 <a class="menu-list-item menu-button">{{ item.levelName }}</a>
                 <span></span>
@@ -14,8 +15,10 @@
                   {{ itemlv2.levelName }}</el-menu-item>
           </el-submenu>
         </el-menu>
-
-        <recursive-nemu></recursive-nemu>
+---->
+        <el-menu default-active="1" unique-opened="true" class="el-menu-vertical-demo" theme="dark">
+            <recursive-menu :items="items"></recursive-menu>
+        </el-menu>
     </div>
 </template>
 
@@ -28,12 +31,6 @@ export default {
     items: []
   }),
   methods: {
-    handleOpen (key, keyPath) {
-        // console.log(key, keyPath)
-    },
-    handleClose (key, keyPath) {
-        // console.log(key, keyPath)
-    },
     menuListExpand (menu) {
       var vm = this
       menu.forEach(function (r, i) {

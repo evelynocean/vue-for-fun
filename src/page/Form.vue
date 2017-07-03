@@ -96,6 +96,7 @@
 <style>
     .form-test {
       width: 70%;
+      padding: 10px;
     }
   .el-row {
       width: 100%;
