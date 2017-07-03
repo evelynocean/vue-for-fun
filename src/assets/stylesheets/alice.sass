@@ -55,6 +55,15 @@ body
         &:hover
           background-color: #080808
           text-decoration: none
+      .el-menu-item.is-active
+        border: #000000 2px solid
+        color: aqua
+      .el-submenu.is-active.is-opened
+        .el-submenu__title
+          font-weight: 700
+          color: aqua
+
+
     @media (min-width: 1281px)
       top: 0
       pointer-events: auto

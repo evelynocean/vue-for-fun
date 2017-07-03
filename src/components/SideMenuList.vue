@@ -1,22 +1,6 @@
 <template>
     <div class='md-sidenav-content'>
-        <!---
-        <ul class="menu-list-ul">
-            <router-link v-for="item in items" tag="li" :to="item.levelKey">
-                <a class="menu-list-item menu-button">{{ item.levelName }}</a>
-                <span></span>
-             </router-link>
-        </ul>
-
-        <el-menu v-for="itemlv1 in items" default-active="" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" theme="dark">
-          <el-submenu index="itemlv1.levelKey">
-            <template slot="title">{{ itemlv1.levelName }}</template>
-              <el-menu-item v-for="itemlv2 in itemlv1.childrenList" index="itemlv2.levelKey">
-                  {{ itemlv2.levelName }}</el-menu-item>
-          </el-submenu>
-        </el-menu>
----->
-        <el-menu default-active="1" unique-opened="true" class="el-menu-vertical-demo" theme="dark">
+        <el-menu default-active="1" class="el-menu-vertical-demo" theme="dark" @open="handleOpen" @close="handleClose" @select="handleSelect">
             <recursive-menu :items="items"></recursive-menu>
         </el-menu>
     </div>
@@ -31,6 +15,17 @@ export default {
     items: []
   }),
   methods: {
+    handleOpen (key, keyPath) {
+      // get path = keyPath
+      console.log(key, keyPath)
+    },
+    handleClose (key, keyPath) {
+      console.log(key, keyPath)
+    },
+    handleSelect (key, keyPath) {
+      // get selected = key
+      console.log(key, keyPath)
+    },
     menuListExpand (menu) {
       var vm = this
       menu.forEach(function (r, i) {
