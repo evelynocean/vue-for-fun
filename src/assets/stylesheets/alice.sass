@@ -49,16 +49,18 @@ body
     .el-menu--dark, .el-menu
       background-color: #303030
       color: #f4f4f4
-      .el-menu-item, .el-submenu, .el-submenu__title, .el-submenu .el-menu .el-menu-item
+      .el-menu-item, .el-submenu, .el-submenu__title, .el-submenu .el-menu .el-menu-item, .el-menu--dark .el-submenu .el-menu
         color: #f4f4f4
         background-color: #303030
+        border-bottom: 1px solid rgba(0,0,0,.12)
         &:hover
           background-color: #080808
           text-decoration: none
-      .el-menu-item.is-active
-        border: #000000 2px solid
-        color: aqua
-      .el-submenu.is-active.is-opened
+        .is-active
+          //border: #000000 2px solid
+          font-weight: 700
+          color: aqua
+      .el-submenu.is-opened.is-active
         .el-submenu__title
           font-weight: 700
           color: aqua

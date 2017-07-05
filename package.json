@@ -21,6 +21,8 @@
         "element-ui": "^1.3.7",
         "es5-shim": "^4.5.9",
         "es6-promise": "^4.1.0",
+        "lodash": "^4.17.4",
+        "marked": "^0.3.6",
         "moment": "^2.18.1",
         "vue": "^2.3.3",
         "vue-datatable": "^1.0.4",
@@ -29,7 +31,8 @@
         "vue-i18n": "^7.0.3",
         "vue-router": "^2.3.1",
         "vue-tables": "^1.6.42",
-        "vue2-datepicker": "^1.2.1"
+        "vue2-datepicker": "^1.2.1",
+        "vuex": "^2.3.1"
     },
     "devDependencies": {
         "autoprefixer": "^6.7.2",

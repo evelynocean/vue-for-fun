@@ -4,27 +4,33 @@ import Page1Content from '@/components/Page1Content'
 import Page1 from '@/page/page1'
 import Table from '@/page/Table'
 import Form from '@/page/Form'
+import menuTree from '@/page/menuTree'
+import Markdown from '@/page/Markdown'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [{
-    path: '/aa',
-    component: Table
-    // children: [
-    //   { path: '/BB', component: Page1Content },
-    //   { path: '/bb2', component: Hello },
-    //   { path: '/CC', component: Hello }
-    // ]
+    path: '/markdown',
+    component: Markdown
   }, {
-    path: '/bb',
+    path: '/bb/bb1',
     component: Form
   }, {
-    path: '/bb2',
+    path: '/table',
+    component: Table
+  }, {
+    path: '/cc/cc2/cc21',
+    component: Page1
+  }, {
+    path: '/cc/cc2/cc22',
     component: Page1Content
   }, {
-    path: '/cc',
-    component: Page1
+    path: '/menutree',
+    component: menuTree
+  }, {
+    path: '/ee/ee1/ee1',
+    component: Table
   }
   ]
 })
