@@ -4,8 +4,16 @@ export default {
   getmenu: function (cb) {
     axios.get('http://evelyn.bonnie/getMenuLists')
     .then(function (response) {
-      // vm.items = response.data
-      console.log(response.data)
+      cb(response.data)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+  },
+  gettable: function (cb) {
+    axios.get('http://evelyn.bonnie/getTable')
+    .then(function (response) {
+      // console.log(response.data)
       cb(response.data)
     })
     .catch(function (error) {

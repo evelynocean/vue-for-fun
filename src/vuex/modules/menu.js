@@ -10,7 +10,7 @@ const actions = {
       commit('GETMENU', {res})
     })
   }
-};
+}
 
 const mutations = {
   GETMENU (state, {res}) {

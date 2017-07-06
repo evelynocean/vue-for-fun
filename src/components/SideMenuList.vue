@@ -1,6 +1,6 @@
 <template>
     <div class='md-sidenav-content'>
-        <el-menu default-active="1" class="el-menu-vertical-demo" theme="dark" @open="handleOpen" @close="handleClose" @select="handleSelect">
+        <el-menu v-loading.body="loading" default-active="1" class="el-menu-vertical-demo" theme="dark" @open="handleOpen" @close="handleClose" @select="handleSelect">
             <recursive-menu :items="list.items"></recursive-menu>
         </el-menu>
     </div>
@@ -10,9 +10,9 @@
 // require('es6-promise').polyfill()
 
 export default {
-  // data: () => ({
-  //  items: []
-  // }),
+  data: () => ({
+    loading: true
+  }),
   methods: {
     handleOpen (key, keyPath) {
       // get path = keyPath
@@ -45,14 +45,6 @@ export default {
     }
   },
   created () {
-    // var vm = this
-    // axios.get('http://evelyn.bonnie/getMenuLists')
-    // .then(function (response) {
-    //   vm.items = response.data
-    // })
-    // .catch(function (error) {
-    //   console.log(error)
-    // }.bind(this))
     this.$store.dispatch('getMenu')
   },
   computed: {
@@ -60,6 +52,11 @@ export default {
       return {
         items: this.$store.state.menu.items
       }
+    }
+  },
+  watch: {
+    list () {
+      this.loading = false
     }
   }
 }
