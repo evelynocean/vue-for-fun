@@ -10,40 +10,44 @@
               <el-table-column prop="flow_ip" label="Flow IP" sortable="custom"></el-table-column>
               <el-table-column prop="flow_port" label="Flow Port" sortable="custom"></el-table-column>
             </el-table-column>
-          </el-table>
+            <el-table-column label="Operations">
+              <template scope="scope">
+                <el-button @click="viewData()">View</el-button>
+                <el-button @click="dialogFormVisible = true">count total: {{ counterTotal }}</el-button>
+              </template>
+            </el-table-column>
+           </el-table>
+            <el-dialog title="topic" :visible.sync="dialogFormVisible">
+            <div>
+              <button-counter door="前門" v-on:increment="incrementTotal">btn_1</button-counter>
+              <button-counter door="後門" v-on:increment="incrementTotal">btn_2</button-counter>
+            </div>
+            </el-dialog>
         </div>
-        <div class="block">
-            <!--
-            <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="dataList.page_info.currentPage"
-            :page-sizes="dataList.page_info.pageSizes"
-            :page-size="dataList.page_info.pageSize"
-             layout="dataList.page_info.pageLayout"
-            :total="400">
-        </el-pagination>
-              :current-page="currentPage4"
-      :page-sizes="[100, 200, 300, 400]"
-      :page-size="100"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="400">
-    -->
-            <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="pageInfo.currentPage"
-            :page-sizes="pageInfo.pageSizes"
-            :page-size="pageInfo.pageSize"
-            layout="total, prev, pager, next, jumper, sizes"
-            :total="pageInfo.total">
-        </el-pagination>
-        </div>
-
     </div>
 </template>
 
 <script>
+import Vue from 'vue'
+
+Vue.component('button-counter', {
+  template: '<el-button v-on:click="increment">{{ door }}來客+1 ( {{ counter }} )</el-button>',
+  props: ['door'],
+  data: function () {
+    return {
+      counter: 0
+    }
+  },
+  methods: {
+    /* 來客+1 */
+    increment: function () {
+      this.counter += 1
+    /* 通知主任，多了一人來客 */
+      this.$emit('increment')
+    }
+  }
+})
+
 export default {
   data () {
     return {
@@ -54,7 +58,9 @@ export default {
         pageSizes: [10, 50, 100, 150],
         pageSize: 10,
         currentPage: 1
-      }
+      },
+      dialogFormVisible: false,
+      counterTotal: 0
     }
   },
   created () {
@@ -80,6 +86,13 @@ export default {
     },
     handleCurrentChange (val) {
       // console.log(`当前页: ${val}`)
+    },
+    viewData (id) {
+      this.$emit('viewData')
+      console.log(id)
+    },
+    incrementTotal () {
+      this.counterTotal += 1
     }
   }
 }

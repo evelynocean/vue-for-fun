@@ -8,7 +8,7 @@
 <style>
 html, body, #editor {
     margin: 0;
-    height: 100%;
+    height: 1000px;
     font-family: 'Helvetica Neue', Arial, sans-serif;
     color: #333;
 }

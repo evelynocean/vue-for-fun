@@ -7,7 +7,7 @@
 </template>
 
 <script>
-// require('es6-promise').polyfill()
+require('es6-promise').polyfill()
 
 export default {
   data: () => ({
