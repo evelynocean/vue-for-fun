@@ -12,12 +12,17 @@
             </el-table-column>
             <el-table-column label="Operations">
               <template scope="scope">
-                <el-button @click="viewData()">View</el-button>
+                <el-button @click="viewData(scope.row)">View</el-button>
                 <el-button @click="dialogFormVisible = true">count total: {{ counterTotal }}</el-button>
               </template>
             </el-table-column>
            </el-table>
-            <el-dialog title="topic" :visible.sync="dialogFormVisible">
+            <el-dialog title="view" :visible.sync="dialogview">
+              <div>
+              <div-info :rows.sync="subelement"></div-info>
+              </div>
+            </el-dialog>
+            <el-dialog title="count" :visible.sync="dialogFormVisible">
             <div>
               <button-counter door="前門" v-on:increment="incrementTotal">btn_1</button-counter>
               <button-counter door="後門" v-on:increment="incrementTotal">btn_2</button-counter>
@@ -30,6 +35,11 @@
 <script>
 import Vue from 'vue'
 
+Vue.component('div-info', {
+  template: '<div><el-input v-model="rows.id" placeholder="id"></el-input><el-input v-model="rows.no" placeholder="no"></el-input><el-input v-model="rows.name" placeholder="name"></el-input><el-input v-model="rows.flow_ip" placeholder="flow_ip"></el-input></div>',
+  props: ['rows']
+})
+
 Vue.component('button-counter', {
   template: '<el-button v-on:click="increment">{{ door }}來客+1 ( {{ counter }} )</el-button>',
   props: ['door'],
@@ -39,10 +49,8 @@ Vue.component('button-counter', {
     }
   },
   methods: {
-    /* 來客+1 */
     increment: function () {
       this.counter += 1
-    /* 通知主任，多了一人來客 */
       this.$emit('increment')
     }
   }
@@ -60,7 +68,10 @@ export default {
         currentPage: 1
       },
       dialogFormVisible: false,
-      counterTotal: 0
+      counterTotal: 0,
+      dialogview: false,
+      infomations: '',
+      subelement: ''
     }
   },
   created () {
@@ -87,9 +98,9 @@ export default {
     handleCurrentChange (val) {
       // console.log(`当前页: ${val}`)
     },
-    viewData (id) {
-      this.$emit('viewData')
-      console.log(id)
+    viewData (element) {
+      this.dialogview = true
+      this.subelement = element
     },
     incrementTotal () {
       this.counterTotal += 1
