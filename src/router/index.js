@@ -1,36 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Page1Content from '@/components/Page1Content'
-import Page1 from '@/page/page1'
-import Table from '@/page/Table'
-import Form from '@/page/Form'
-import menuTree from '@/page/menuTree'
-import Markdown from '@/page/Markdown'
+const _import = require('./_import_production')
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [{
-    path: '/markdown',
-    component: Markdown
-  }, {
-    path: '/bb/bb1',
-    component: Form
-  }, {
-    path: '/table',
-    component: Table
-  }, {
-    path: '/cc/cc2/cc21',
-    component: Page1
-  }, {
-    path: '/cc/cc2/cc22',
-    component: Page1Content
-  }, {
-    path: '/menutree',
-    component: menuTree
-  }, {
-    path: '/ee/ee1/ee1',
-    component: Table
+/* layout */
+// import Layout from '../views/layout/Layout'
+
+export const routerMap = [
+    { path: '/login', component: _import('login/index'), hidden: true },
+  {
+    path: '/',
+    component: _import('login/index'),
+    redirect: '/login',
+    name: 'login',
+    hidden: true
+  },
+  {
+    path: '/test',
+    component: '',
+    redirect: '/test',
+    name: '預設頁',
+    hidden: true,
+    children: [{ path: 'test', component: _import('test/index') }]
   }
-  ]
+]
+
+export default new Router({
+  scrollBehavior: () => ({ y: 0 }),
+  routes: routerMap
 })
+
+// export const asyncRouterMap = [
+
+// ]
