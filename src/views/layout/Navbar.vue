@@ -11,7 +11,7 @@
 				<i class="el-icon-caret-bottom"></i>
 			</div>
 			<el-dropdown-menu class="user-dropdown" slot="dropdown">
-			<el-dropdown-item divided><span @click="logout" style="display:block;">登出</span></el-dropdown-item>
+			<el-dropdown-item><span @click="logout" style="display:block;">登出</span></el-dropdown-item>
 			</el-dropdown-menu>
 		</el-dropdown>
 	</el-menu>
@@ -69,6 +69,7 @@
 					height: 50px;
 					float: left;
 					padding: 0 10px;
+					display: none;
 			}
 			.errLog-container {
 					display: inline-block;
