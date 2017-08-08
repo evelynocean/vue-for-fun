@@ -3,10 +3,10 @@ const errLog = {
         errLog: []
     },
     pushLog(log) {
-        //this.state.errLog.unshift(log)
+        this.state.errLog.unshift(log)
     },
     clearLog() {
-        //this.state.errLog = []
+        this.state.errLog = []
     }
 }
 

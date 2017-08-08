@@ -1,4 +1,4 @@
-import { asyncRouterMap, constantRouterMap } from 'src/router';
+import { asyncRouterMap, routerMap } from 'src/router'
 import { deepClone } from 'utils'
 
 /**
@@ -7,11 +7,11 @@ import { deepClone } from 'utils'
  * @param route
  */
 function hasPermission(roles, route) {
-  if (route.meta && route.meta.role) {
-    return roles.some(role => route.meta.role.indexOf(role) >= 0)
-  } else {
-    return true
-  }
+    if (route.meta && route.meta.role) {
+        return roles.some(role => route.meta.role.indexOf(role) >= 0)
+    } else {
+        return true
+    }
 }
 
 /**
@@ -20,44 +20,38 @@ function hasPermission(roles, route) {
  * @param roles
  */
 function filterAsyncRouter(asyncRouterMap, roles) {
-  const accessedRouters = asyncRouterMap.filter(route => {
-    if (hasPermission(roles, route)) {
-      if (route.children && route.children.length) {
-        route.children = filterAsyncRouter(route.children, roles)
-      }
-      return true
-    }
-    return false
-  })
-  return accessedRouters
+    const accessedRouters = asyncRouterMap.filter(route => {
+        if (hasPermission(roles, route)) {
+            if (route.children && route.children.length) {
+                route.children = filterAsyncRouter(route.children, roles)
+            }
+            return true
+        }
+        return false
+    })
+    return accessedRouters
 }
 
 const permission = {
-  state: {
-    routers: constantRouterMap,
-    addRouters: []
-  },
-  mutations: {
-    SET_ROUTERS: (state, routers) => {
-      state.addRouters = deepClone(routers)
-      state.routers = deepClone(constantRouterMap.concat(routers))
-    }
-  },
-  actions: {
-    GenerateRoutes({ commit }, data) {
-      return new Promise(resolve => {
-        const { roles } = data
-        let accessedRouters
-        if (roles.indexOf('admin') >= 0) {
-          accessedRouters = asyncRouterMap
-        } else {
-          accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
+    state: {
+        routers: routerMap,
+        addRouters: []
+    },
+    mutations: {
+        SET_ROUTERS: (state, routers) => {
+            state.addRouters = deepClone(routers)
+            state.routers = deepClone(routerMap.concat(routers))
         }
-        commit('SET_ROUTERS', accessedRouters);
-        resolve();
-      })
+    },
+    actions: {
+        GenerateRoutes({ commit }, data) {
+            return new Promise(resolve => {
+                console.log('asyncRouterMap', asyncRouterMap)
+                commit('SET_ROUTERS', asyncRouterMap)
+                resolve()
+            })
+        }
     }
-  }
 };
 
-export default permission;
+export default permission

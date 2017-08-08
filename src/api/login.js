@@ -7,7 +7,7 @@ export function login(account, password) {
     }
     return axios({
         url: '/login',
-        method: 'post',
+        method: 'get',
         data
     })
 }

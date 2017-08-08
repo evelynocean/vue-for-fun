@@ -63,10 +63,10 @@
       handleLogin() {
             console.log('this.loginForm', this.loginForm);
             this.$store.dispatch('Login', this.loginForm).then(() => {
-              console.log('dispatch',data);
-              this.$router.push({ path: '/test' });
+              console.log('dispatch');
+              this.$router.push({ path: '/' });
             }).catch(err => {
-              console.log('error');
+              console.log('error', err);
               this.$message.error(err);
               this.loading = false;
             });

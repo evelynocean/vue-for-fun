@@ -1,5 +1,5 @@
 import { login } from 'api/login'
-// import { getToken, setToken, removeToken } from 'utils/auth'
+import { setToken } from 'utils/auth'
 
 const user = {
     state: {
@@ -9,8 +9,8 @@ const user = {
     },
 
     mutations: {
-        LOGIN_SUCCESS: (state, userInfo) => {
-            console.log('login success')
+        SET_TOKEN: (state, token) => {
+            state.token = token
         }
     },
 
@@ -22,8 +22,8 @@ const user = {
             return new Promise((resolve, reject) => {
                 login(account, userInfo.password).then(response => {
                     const data = response.data
-                    console.log('Login ', data)
-                    commit('LOGIN_SUCCESS', data)
+                    setToken(data)
+                    commit('SET_TOKEN', data)
                     resolve()
                 }).catch(error => {
                     reject(error)
