@@ -9,6 +9,7 @@ import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
 import store from './store'
 import { getToken } from 'utils/auth'
+
 // 设置语言
 locale.use(lang)
 
@@ -17,8 +18,8 @@ Vue.use(ElementUI)
 
 // set routers
 if (getToken()) {
-  store.dispatch('GenerateRoutes').then(() => {
-      router.addRoutes(store.getters.addRouters)
+    store.dispatch('GenerateRoutes').then(() => {
+        router.addRoutes(store.getters.addRouters)
     })
 }
 
@@ -26,9 +27,9 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  store,
-  template: '<App/>',
-  components: { App }
+    el: '#app',
+    router,
+    store,
+    template: '<App/>',
+    components: { App }
 })

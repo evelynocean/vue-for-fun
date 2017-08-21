@@ -3,6 +3,7 @@
 		<transition name="fade" mode="out-in">
 			<router-view :key="key"></router-view>
 		</transition>
+    <div class="copyright">Copyright: </div>
 	</section>
 </template>
 
@@ -16,3 +17,13 @@
   }
 }
 </script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+  .copyright{
+    background-color: #eef1f6;
+    height: 24px;
+    text-align: center;
+    padding: 4px;
+    font-size: 0.8rem;
+  }
+</style>
